@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>השוואת מצעים – בחירות 2026</title>
+<meta name="description" content="השוואה מבוססת מקורות רשמיים בין ביחד (נפתלי בנט), ישר! (גדי איזנקוט) והדמוקרטים (יאיר גולן) לקראת הבחירות לכנסת ה-26, 27 באוקטובר 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f5f2; --surface:#ffffff; --surface-2:#f0eee9; --ink:#1d1d1f; --ink-2:#4a4a50; --muted:#6e6e76;
+    --line:#dedbd3; --accent:#2b4c7e;
+    --p1:#0f7c74; --p1-tint:#e3f2f0;   /* ביחד */
+    --p2:#2f4fa3; --p2-tint:#e6ebf7;   /* ישר! */
+    --p3:#b03a3a; --p3-tint:#f7e7e6;   /* הדמוקרטים */
+    --badge-plat:#e9f1e6; --badge-plat-ink:#2f5d27;
+    --badge-stmt:#fbf0dc; --badge-stmt-ink:#7a5410;
+    --badge-none:#eeeeee; --badge-none-ink:#555;
+    --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 14px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141518; --surface:#1d1f23; --surface-2:#25282d; --ink:#ececee; --ink-2:#c4c4ca; --muted:#9a9aa3;
+      --line:#34373d; --accent:#8fb0e6;
+      --p1:#4fc3b8; --p1-tint:#16302d; --p2:#8ea7ef; --p2-tint:#1c2540; --p3:#ee8a8a; --p3-tint:#3a1f1f;
+      --badge-plat:#1f3320; --badge-plat-ink:#a9d6a0; --badge-stmt:#3a2e15; --badge-stmt-ink:#f0cd8a;
+      --badge-none:#2c2c2c; --badge-none-ink:#bbb; --shadow:none;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#141518; --surface:#1d1f23; --surface-2:#25282d; --ink:#ececee; --ink-2:#c4c4ca; --muted:#9a9aa3;
+    --line:#34373d; --accent:#8fb0e6;
+    --p1:#4fc3b8; --p1-tint:#16302d; --p2:#8ea7ef; --p2-tint:#1c2540; --p3:#ee8a8a; --p3-tint:#3a1f1f;
+    --badge-plat:#1f3320; --badge-plat-ink:#a9d6a0; --badge-stmt:#3a2e15; --badge-stmt-ink:#f0cd8a;
+    --badge-none:#2c2c2c; --badge-none-ink:#bbb; --shadow:none;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Assistant",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.65}
+  a{color:var(--accent);text-underline-offset:2px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+  header.top{padding:32px 0 8px}
+  .kicker{font-weight:700;color:var(--muted);font-size:.9rem;letter-spacing:.02em}
+  h1{font-size:clamp(1.7rem,4.5vw,2.6rem);line-height:1.2;margin:.2em 0 .3em;font-weight:800}
+  .lede{color:var(--ink-2);max-width:820px;margin:0 0 12px}
+  .meta{font-size:.9rem;color:var(--muted)}
+  nav.toc{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);margin-top:12px}
+  nav.toc ul{list-style:none;margin:0;padding:8px 0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+  nav.toc ul::-webkit-scrollbar{display:none}
+  nav.toc a{display:block;white-space:nowrap;padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);text-decoration:none;color:var(--ink-2);font-size:.88rem;font-weight:600}
+  section{padding:28px 0 6px}
+  h2{font-size:clamp(1.3rem,3vw,1.75rem);margin:0 0 12px;font-weight:800}
+  h3{font-size:1.1rem;margin:0 0 6px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media (max-width:860px){.grid-3,.grid-2{grid-template-columns:1fr}}
+  .note{font-size:.9rem;color:var(--muted)}
+  .callout{border-inline-start:4px solid var(--accent);background:var(--surface-2);padding:12px 14px;border-radius:8px;font-size:.95rem}
+  /* party chips */
+  .pname{display:inline-flex;align-items:center;gap:8px;font-weight:800}
+  .dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+  .p1 .dot,.dot.p1{background:var(--p1)} .p2 .dot,.dot.p2{background:var(--p2)} .p3 .dot,.dot.p3{background:var(--p3)}
+  .party-card{border-top:5px solid var(--line)}
+  .party-card.p1{border-top-color:var(--p1)} .party-card.p2{border-top-color:var(--p2)} .party-card.p3{border-top-color:var(--p3)}
+  .party-card .sub{color:var(--muted);font-size:.9rem;margin:2px 0 10px}
+  .people{list-style:none;padding:0;margin:0}
+  .people li{padding:8px 0;border-top:1px dashed var(--line);font-size:.95rem}
+  .people li:first-child{border-top:0}
+  .people b{display:inline-block;min-width:1.6em;color:var(--muted);font-weight:700}
+  /* math */
+  .formula{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--surface-2);padding:10px 12px;border-radius:8px;direction:rtl;font-size:.92rem;overflow-wrap:anywhere}
+  .stat{display:flex;flex-direction:column;gap:2px}
+  .stat .n{font-size:1.6rem;font-weight:800;line-height:1.1}
+  .stat .l{font-size:.88rem;color:var(--muted)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:12px 0}
+  @media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  /* polls */
+  table.polls{width:100%;border-collapse:collapse;font-size:.95rem}
+  table.polls th,table.polls td{padding:9px 8px;border-bottom:1px solid var(--line);text-align:center}
+  table.polls th:first-child,table.polls td:first-child{text-align:right}
+  table.polls thead th{font-weight:800;background:var(--surface-2)}
+  table.polls tfoot td{font-weight:800}
+  .bar{height:8px;border-radius:4px;display:block;margin-top:4px}
+  .scroll-x{overflow-x:auto}
+  /* comparison table → cards */
+  table.cmp{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+  table.cmp thead th{padding:12px;text-align:right;font-size:1rem;border-bottom:2px solid var(--line);background:var(--surface)}
+  table.cmp thead th.c1{color:var(--p1)} table.cmp thead th.c2{color:var(--p2)} table.cmp thead th.c3{color:var(--p3)}
+  table.cmp th.topic{width:15%;background:var(--surface-2);vertical-align:top;text-align:right;padding:14px 12px;font-size:1rem;font-weight:800;border-bottom:1px solid var(--line)}
+  table.cmp td{vertical-align:top;padding:14px 12px;border-bottom:1px solid var(--line);border-inline-start:1px solid var(--line);font-size:.95rem;width:28.33%}
+  table.cmp tr:last-child td,table.cmp tr:last-child th{border-bottom:0}
+  table.cmp td ul{margin:6px 0 0;padding-inline-start:18px}
+  table.cmp td li{margin:3px 0}
+  .src{display:block;margin-top:8px;font-size:.8rem;color:var(--muted)}
+  .src a{color:var(--muted)}
+  .badge{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-inline-end:4px;vertical-align:middle}
+  .b-plat{background:var(--badge-plat);color:var(--badge-plat-ink)}
+  .b-stmt{background:var(--badge-stmt);color:var(--badge-stmt-ink)}
+  .b-none{background:var(--badge-none);color:var(--badge-none-ink)}
+  q{quotes:"״" "״"}
+  @media (max-width:760px){
+    table.cmp,table.cmp tbody,table.cmp tr,table.cmp th,table.cmp td{display:block;width:100%}
+    table.cmp{background:transparent;border:0;box-shadow:none;border-radius:0}
+    table.cmp thead{display:none}
+    table.cmp tr{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden}
+    table.cmp th.topic{width:100%;background:var(--surface-2);font-size:1.08rem;padding:12px 14px;border-bottom:1px solid var(--line)}
+    table.cmp td{border-inline-start:0;border-bottom:1px solid var(--line);padding:12px 14px}
+    table.cmp tr td:last-child{border-bottom:0}
+    table.cmp td::before{content:attr(data-label);display:flex;align-items:center;gap:8px;font-weight:800;margin-bottom:4px}
+    table.cmp td.c1{border-inline-start:4px solid var(--p1)} table.cmp td.c1::before{color:var(--p1)}
+    table.cmp td.c2{border-inline-start:4px solid var(--p2)} table.cmp td.c2::before{color:var(--p2)}
+    table.cmp td.c3{border-inline-start:4px solid var(--p3)} table.cmp td.c3::before{color:var(--p3)}
+  }
+  /* sources */
+  .sources h3{margin-top:18px}
+  .sources ol{padding-inline-start:20px;margin:6px 0}
+  .sources li{margin:5px 0;font-size:.93rem;overflow-wrap:anywhere}
+  footer{padding:30px 0 50px;color:var(--muted);font-size:.88rem}
+  .theme-btn{position:fixed;bottom:16px;left:16px;z-index:10;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 12px;font:inherit;font-size:.85rem;cursor:pointer;box-shadow:var(--shadow)}
+  .ai-note{background:var(--badge-stmt);color:var(--badge-stmt-ink);border-radius:10px;padding:10px 14px;font-size:.92rem;margin:4px 0 12px;max-width:820px}
+  .vote-note{display:flex;gap:12px;align-items:flex-start;background:var(--p2-tint);border:2px solid var(--p2);border-radius:12px;padding:12px 16px;font-size:1rem;margin:8px auto 12px;max-width:820px}
+  .vote-note b{font-size:1.1rem}
+  .vote-ic{font-size:1.6rem;line-height:1}
+  .legend{margin-top:12px}
+</style>
+</head>
+<body>
+
+<header class="top wrap">
+  <div class="kicker">בחירות לכנסת ה-26 · יום שלישי, 27 באוקטובר 2026</div>
+  <h1>ביחד, ישר! והדמוקרטים: השוואת מצעים ממקורות רשמיים</h1>
+  <p class="lede">השוואה בין שלוש הרשימות לפי נושאים, על בסיס מסמכי המצע ותוכניות העבודה שהרשימות עצמן פרסמו, ובמקומות שהמצע שותק – התבטאויות פומביות מתועדות של יושבי הראש. כל עמדה מסומנת לפי סוג המקור, וכל המקורות מפורטים בסוף הדף.</p>
+  <div class="ai-note" role="note"><b>הסתייגות:</b> עמוד זה נוצר באמצעות בינה מלאכותית (AI). אף שהמידע נאסף מאתרי המפלגות, ממסמכי מצע רשמיים וממקורות מתועדים, ייתכנו טעויות, השמטות או ניסוחים לא מדויקים בתקצירים. לפני קבלת החלטה מומלץ לבדוק כל עמדה במקור המקושר.</div>
+  <p class="meta">עודכן: 26 באוקטובר 2026 · הדף אינו ממליץ על אף רשימה ואינו מדרג אותן.</p>
+</header>
+
+<nav class="toc" aria-label="תוכן העניינים">
+  <div class="wrap">
+    <ul>
+      <li><a href="#compare">טבלת ההשוואה</a></li>
+      <li><a href="#mandate">איך מחושב מנדט</a></li>
+      <li><a href="#polls">סקרים אחרונים</a></li>
+      <li><a href="#people">הרשימות ואנשי המפתח</a></li>
+      <li><a href="#sources">מקורות</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- ===================== COMPARISON ===================== -->
+<section id="compare" aria-labelledby="h-compare">
+  <h2 id="h-compare">השוואה לפי נושאים</h2>
+  <p class="note">במסך רחב מוצגת טבלה; במסך צר כל נושא הופך לכרטיס נפרד. התקצירים הם ניסוח שלנו; ציטוטים קצרים מסומנים במירכאות.</p>
+
+  <table class="cmp">
+    <thead>
+      <tr>
+        <th scope="col">נושא</th>
+        <th scope="col" class="c1">ביחד (בנט)</th>
+        <th scope="col" class="c2">ישר! (איזנקוט)</th>
+        <th scope="col" class="c3">הדמוקרטים (גולן)</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <!-- 1 -->
+      <tr>
+        <th scope="row" class="topic">מדינה פלסטינית והסכסוך</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-stmt">התבטאות</span> בנט מתנגד להקמת מדינה פלסטינית בכל תרחיש, וב-17.10 הצהיר שממשלה שבה יהיה שותף לא תקים מדינה כזו ולא תוותר על שטחים.
+          <br><span class="badge b-plat">מצע</span> תפיסת הביטחון מתמקדת בעזה: חמאס יפורק מנשקו או שישראל תפרק אותו; צה״ל לא יזוז מ„הקו הצהוב״ עד לפירוק מלא; תקיפה על כל התעצמות; אין עניין לנהל את עזה. הכרזה על קטאר כמדינת אויב והוצאתה ושל טורקיה מכל מעורבות בעזה, והכנסת מצרים במקומן.
+          <span class="src">מקורות: <a href="https://be-yahad.org.il/plans/natsec/">תפיסת הביטחון של ביחד</a> · וואלה (אוגוסט 2026) · ישראל היום (17.10.2026)</span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-stmt">התבטאות</span> איזנקוט בחשבונו הרשמי ב-X (22.8.2026): <q>בממשלה שנקים לא תקום מדינה פלסטינית</q>.
+          <br><span class="badge b-plat">מצע</span> מסמך „10 הצעדים״ מדבר על תפיסת ביטחון חדשה, חיזוק צה״ל וביצור הגבולות, לצד חתירה להרחבת מעגל השלום ולהבטחת רוב יהודי מוצק לדורות. המסמך אינו מפרט מתווה מדיני מול הפלסטינים.
+          <span class="src">מקורות: <a href="https://yasharwitheisenkot.com/agenda_point/">10 הצעדים</a> · <a href="https://x.com/gadi_eisenkot/status/2091209017259368960">פוסט איזנקוט ב-X</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span> מסמך החזון (אפריל 2026) מציע מהלך מדיני להיפרדות מהפלסטינים: גבולות קבע עם רוב יהודי מוצק, פירוז מלא של המדינה הפלסטינית העתידית, שליטה ביטחונית ישראלית בבקעת הירדן, ועצירת כל מהלכי הסיפוח. בעזה: פירוז, החלפת שלטון חמאס, נוכחות ישראלית בגבולות ובמעברים ומסגרת ערבית-בינלאומית לשיקום. העיקרון מסוכם כ<q>לא לסיפוח, כן להיפרדות אחראית</q>. כן: נורמליזציה עם סעודיה והסכמים ביטחוניים עם לבנון וסוריה.
+          <span class="src">מקורות: <a href="https://democrats.org.il/wp-content/uploads/2026/04/vision0426.pdf">מסמך החזון</a> · <a href="https://democrats.org.il/content/end-war-agreement">לסיים את המלחמה בהסכם מדיני</a></span>
+        </td>
+      </tr>
+
+      <!-- 2 -->
+      <tr>
+        <th scope="row" class="topic">גיוס, שירות אזרחי ושוויון בנטל</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-plat">מצע</span> „חוק המשרתים״: מי שלא משרת לא מקבל הטבות. ביטול כספים קואליציוניים, קצבאות אברכים, מעמד אברך=סטודנט והנחות בארנונה ובמעונות למי שלא משרת ועובד. במקביל: הטבה של עד מיליון ₪ לדירה למשרת מילואים פעיל, מעונות יום חינם, 50% הנחה בחשמל, מים וארנונה. שירות לאומי מלא נחשב כשירות צבאי מלא. היעד: הורדת נטל המילואים מ-35 ל-11 ימים בשנה; העלות (8.8 מיליארד ₪) ממומנת מהקיצוצים, ללא הגדלת הגירעון. תפיסת הביטחון קובעת שכולם יתגייסו ללא פטורים.
+          <span class="src">מקורות: <a href="https://be-yahad.org.il/plans/meshartim-law/">חוק המשרתים</a> · <a href="https://be-yahad.org.il/plans/natsec/">תפיסת הביטחון</a></span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-plat">מצע</span> חוק „שירות ממלכתי לכל״: חובת שירות לכל אזרח, צה״ל בעדיפות ראשונה ומי שלא ישרת בו יחויב בשירות אזרחי-לאומי. מנהלת שירות עצמאית תמיין את כל הצעירים. עד 3% מכל מחזור יוכלו לדחות שירות בשנה לצורך לימוד תורה, אחרי חיול והכשרה בסיסית. משתמטים: שלילת שורה ארוכה של הטבות (מכרזי מדינה, מלגות, פטורי מס בדיור ועוד), איסור יציאה מהארץ ודין פלילי. מדרג הטבות: לוחמים, משרתי צבא, משרתי שירות אזרחי.
+          <span class="src">מקור: <a href="https://yasharwitheisenkot.com/principles/service-for-all/">ישר! לשירות ממלכתי לכל</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span> חיוב שירות צבאי לפי החוק הקיים, ביטול פטורים וחקיקה סקטוריאלית, לצד מסלולי שירות לאומי-אזרחי („גיוס לכולם, לפי החוק״). אין הדרת חיילות או פגיעה בשירותן. היעד: הורדת ימי המילואים ל-21–30 ימים בשנה, בין היתר באמצעות סגירת החזיתות בהסדרים מדיניים.
+          <span class="src">מקורות: <a href="https://democrats.org.il/wp-content/uploads/2026/04/vision0426.pdf">מסמך החזון</a> · <a href="https://democrats.org.il/content/equality-checklist">רשימת בדיקה – שוויון</a> · <a href="https://democrats.org.il/content/end-war-agreement">לסיים את המלחמה</a></span>
+        </td>
+      </tr>
+
+      <!-- 3 -->
+      <tr>
+        <th scope="row" class="topic">יוקר המחיה, כלכלה ומיסוי</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-plat">מצע</span> יעד: מחיר סל הקניות יירד לממוצע ה-OECD בתוך שלוש שנים. פירוק מונופולים, הגבלת שליטה של חברה אחת במגוון ענפי מזון, הסרת חסמי יבוא, אימוץ התקינה האירופית, רשות מזון אחת, ביטול מכסים לצד תמיכה ישירה בחקלאים והכרה בכשרויות מחו״ל. דיור: כ-100 אלף דירות להשכרה ארוכת טווח בעשור ו<b>הטבות מס</b> למשכירים בחוזים ארוכים. „חוק קו העימות״ כולל <b>מס חברות מופחת</b> והטבות מס בצפון עד 2035.
+          <span class="src">מקורות: <a href="https://be-yahad.org.il/plans/yokermichya/">יוקר המחיה</a> · <a href="https://be-yahad.org.il/plans/housing/">דיור</a> · <a href="https://be-yahad.org.il/plans/northborderlaw/">חוק קו העימות</a></span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-plat">מצע</span> שינוי חוקי המס כך ש<b>נקודות הזיכוי</b> וההטבות יתועדפו למי שנושא בנטל הביטחוני והכלכלי. נגד יוקר המחיה: פירוק ריכוזיות, ביטול חסמי יבוא ותקנים ייחודיים, יבוא מקביל, רפורמה בכשרות וביבוא מוצרים כשרים. דיור: הצפת השוק בדירות ו<b>מס על קרקעות</b> שאינן מקודמות לבנייה. מאבק בפרוטקשן, כלי AI לחשיפת חשבוניות פיקטיביות, סגירת משרדי ממשלה מיותרים והשקעה בפריפריה.
+          <span class="src">מקורות: <a href="https://yasharwitheisenkot.com/principles/economics/">ישר! לכלכלה</a> · <a href="https://yasharwitheisenkot.com/agenda_point/">10 הצעדים</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span> פתיחת שוק המזון ליבוא ולתחרות וביטול חסמי תקינה מיותרים, חיזוק רשות התחרות והגבלת ריכוזי שליטה, שקיפות מחירים, ושחרור קרקעות המדינה להוזלת הדיור. חיזוק הרפואה הציבורית (רופאים, אחיות, מיטות) והגדלת ההשקעה בשירותי הרווחה.
+          <br><span class="badge b-none">לא נמצא</span> לא נמצאה במקורות שנבדקו התייחסות מפורשת לשינויים בשיעורי המס.
+          <span class="src">מקור: <a href="https://democrats.org.il/wp-content/uploads/2026/04/vision0426.pdf">מסמך החזון</a></span>
+        </td>
+      </tr>
+
+      <!-- 4 -->
+      <tr>
+        <th scope="row" class="topic">זכויות להט״ב ודיני אישות</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-plat">מצע</span> ברית זוגיות אזרחית במשרד הפנים ללא תלות בדת, מגדר או נטייה מינית, עם מלוא זכויות הנשואים. רישום הורות שוויוני מיידי, עיגון הזכות לשוויון בחוק יסוד, איסור „טיפולי המרה״ והסתה, אכיפה נגד פשעי שנאה ותקציב קבוע לארגוני הקהילה.
+          <span class="src">מקורות: <a href="https://be-yahad.org.il/plans/pride/">תוכנית הקהילה הגאה</a> · <a href="https://be-yahad.org.il/plans/religionandstate/">דת ומדינה</a></span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-plat">מצע</span> מיסוד זוגיות אזרחית: מסלול רישום פתוח לכל זוג, כולל חד-מיני. השוואת רישום ההורות, מענה להריון משותף ולאזרוח תינוקות מפונדקאות בחו״ל. איסור טיפולי המרה, הוספת נטייה מינית וזהות מגדרית לכל איסורי ההפליה, וחתימה על „חוקי שגיא לשוויון״.
+          <span class="src">מקור: <a href="https://yasharwitheisenkot.com/principles/lgbtqia/">ישר! לקהילה הגאה</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span> מערך נישואין <b>וגירושין</b> אזרחיים מקביל לרבנות, כולל זוגות מעורבים, זוגות להט״בים ומי שאינם מזוהים דתית; ביטול הרחבת סמכויות בתי הדין הרבניים. רישום הורות שוויוני, שוויון בפונדקאות ובאימוץ, חוק איסור טיפולי המרה לקטינים, חוק הכרה בנפגעי פשעי שנאה ותקציב של 100 מיליון ₪ בשנה לאגף לקידום להט״ב.
+          <span class="src">מקורות: <a href="https://democrats.org.il/wp-content/uploads/2026/04/vision0426.pdf">מסמך החזון</a> · <a href="https://democrats.org.il/content/equality-checklist">רשימת בדיקה – שוויון</a></span>
+        </td>
+      </tr>
+
+      <!-- 5 -->
+      <tr>
+        <th scope="row" class="topic">דת ומדינה, שבת ותחבורה ציבורית</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-plat">מצע</span> כל רשות מקומית תחליט על תחבורה ציבורית בשבת. ביטול הבלעדיות של הרבנות הראשית (בלי לבטלה), הכרה בכשרות בינלאומית, החזרת סמכויות גיור לרבני קהילה, ושלילת מימון ציבורי מבתי ספר שאינם ממלכתיים. סיסמת התוכנית: <q>זהות יהודית כן. כפייה דתית לא.</q>
+          <span class="src">מקור: <a href="https://be-yahad.org.il/plans/religionandstate/">רק ביחד נתקן את יחסי הדת והמדינה</a></span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-plat">מצע</span> הסדרים חדשים ומאוזנים שישמרו על ישראל כמדינה יהודית-דמוקרטית ויאפשרו לכל אזרח לשמור על אורח חייו; קידום „יהדות מכילה ומכבדת״ והרחבת עצמאות הרשויות המקומיות והקהילות לעצב פתרונות לפי אופיין. רפורמה בכשרות (בתוכנית הכלכלית).
+          <br><span class="badge b-none">לא נמצא</span> לא נמצאה התחייבות מפורשת לתחבורה ציבורית בשבת – הנושא מופנה לרמת הרשות המקומית והקהילה.
+          <span class="src">מקורות: <a href="https://yasharwitheisenkot.com/agenda_point/">10 הצעדים</a> · <a href="https://yasharwitheisenkot.com/principles/economics/">ישר! לכלכלה</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span> תחבורה ציבורית בכל ימות השבוע; באזורים חילוניים או מעורבים – שירות בשבת במתכונת מצומצמת, והרשויות המקומיות יוסמכו לקבוע את היקפו. הכרה בגיורים מכל הזרמים, שכר ותנאים שווים לרבנים מכל הזרמים, רפורמה בכשרות שתסיים את המונופול של הרבנות, וקבורה אזרחית במימון שוויוני.
+          <span class="src">מקורות: <a href="https://democrats.org.il/content/shabbat-public-transport">תחבורה ציבורית בשבת</a> · <a href="https://democrats.org.il/en/home-2/">עמוד החזון (אנגלית)</a> · <a href="https://democrats.org.il/content/civil-marriage-conversion">נישואים אזרחיים וגיור</a></span>
+        </td>
+      </tr>
+
+      <!-- 6 -->
+      <tr>
+        <th scope="row" class="topic">חינוך, לימודי ליבה ותקצוב</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-plat">מצע</span> מימון ציבורי מותנה בלימודי ליבה מלאים – בלשון התוכנית <q>או 100% ליבה, או 0% מימון</q>. יעד: ליבה מלאה לכל תלמיד חרדי מכיתה א׳ עד י״ב בתוך שמונה שנים. שכר התחלתי של 12 אלף ₪ למורה, העברת רוב הסמכויות מהמטה לרשויות ולמנהלות, והרחבת מעונות היום מלידה עד גיל 3.
+          <span class="src">מקור: <a href="https://be-yahad.org.il/plans/education/">רק ביחד נתקן את מערכת החינוך</a></span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-plat">מצע</span> עדיפות ברורה לחינוך הממלכתי, לימודי ליבה לכל, חיזוק „הליבה הערכית״ ברוח מגילת העצמאות, ביזור סמכויות ותקציבים למורים ולמנהלים, וחיזוק לימודים טכנולוגיים לצד תכנים של מסורת ישראל.
+          <span class="src">מקורות: <a href="https://yasharwitheisenkot.com/agenda_point/">10 הצעדים</a> · <a href="https://yasharwitheisenkot.com/principles/education/">ישר! לחינוך</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span> איחוד זרמי החינוך למערכת ממלכתית אחת עם תוכנית ליבה אחידה (עברית, אנגלית, מתמטיקה, מדעים, היסטוריה, דמוקרטיה ואזרחות). תקצוב כל תלמיד לפי קריטריונים זהים ללא תלות בזרם. ביטול המעמד המיוחד של רשתות החינוך החרדיות והפסקת תקצובן, וקידום חינוך ממלכתי-חרדי. הקמת מועצה לחינוך ממלכתי כשומרת סף מפני גורמים חיצוניים.
+          <span class="src">מקורות: <a href="https://democrats.org.il/wp-content/uploads/2026/04/vision0426.pdf">מסמך החזון</a> · <a href="https://democrats.org.il/content/equality-checklist">רשימת בדיקה – שוויון</a></span>
+        </td>
+      </tr>
+
+      <!-- 7 -->
+      <tr>
+        <th scope="row" class="topic">מערכת המשפט, מבנה הממשל וחקירת 7 באוקטובר</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-plat">מצע</span> מגילת העצמאות תהפוך לפרק הפתיחה של חוקה, ולצדה יחוקק <b>חוק יסוד: החקיקה</b> שיקבע את סמכויות הכנסת, הממשלה ובית המשפט. <b>ועדת חקירה ממלכתית</b>: ההחלטה הראשונה של הממשלה, כבר בערב ההשבעה.
+          <span class="src">מקורות: <a href="https://be-yahad.org.il/the-scroll/">חוזרים למגילת העצמאות</a> · <a href="https://be-yahad.org.il/vaada/">מקימים ועדת חקירה ממלכתית</a></span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-plat">מצע</span> שמירה על מערכת משפט עצמאית, תקשורת חופשית ושלטון החוק; חקיקת <b>חוק יסוד: החקיקה</b>. <b>הגבלת כהונת ראש הממשלה לשתי קדנציות</b> וצמצום משרדי ממשלה. <b>ועדת חקירה ממלכתית</b> כהחלטת הממשלה הראשונה – לטבח 7 באוקטובר, לעשור שקדם לו ולניהול המלחמה; המפלגה פרסמה טיוטת מתווה להתייחסות הציבור.
+          <span class="src">מקורות: <a href="https://yasharwitheisenkot.com/agenda_point/">10 הצעדים</a> · <a href="https://yasharwitheisenkot.com/vaadat-hakira/">מתווה ועדת החקירה</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span> ביטול חוקי „ההפיכה המשטרית״ וחקיקת <b>חוק יסוד: החקיקה</b>; חיזוק עצמאות הרשות השופטת וסמכות הביקורת השיפוטית, ללא חקיקה עוקפת בג״ץ או פסקת התגברות גורפת. תיקון חוק הלאום ברוח מגילת העצמאות וחיזוק שומרי הסף. <b>ועדת חקירה ממלכתית</b> שחבריה ימונו בידי נשיא בית המשפט העליון, כקבוע בחוק, ויישום מלא של מסקנותיה.
+          <span class="src">מקורות: <a href="https://democrats.org.il/wp-content/uploads/2026/04/vision0426.pdf">מסמך החזון</a> · <a href="https://democrats.org.il/content/state-commission-inquiry">ועדת חקירה ממלכתית</a> · <a href="https://democrats.org.il/content/repeal-judicial-overhaul">ביטול חוקי הרפורמה</a></span>
+        </td>
+      </tr>
+
+      <!-- 8 -->
+      <tr>
+        <th scope="row" class="topic">נושאי מפתח נוספים מהמצעים</th>
+        <td class="c1" data-label="ביחד (בנט)">
+          <span class="badge b-plat">מצע</span>
+          <ul>
+            <li><b>חוק קו העימות</b>: שיקום הצפון כמחויבות בחוק עד 2035 עם תקציב רב-שנתי.</li>
+            <li><b>בריאות</b>: עשרות מרכזי בריאות קהילתיים והכפלת ההשקעה ברפואה מונעת.</li>
+            <li><b>חוץ</b>: חיזוק הסכמי אברהם, נורמליזציה עם סעודיה ואינדונזיה, וגוף הסברה לאומי במשרד רה״מ.</li>
+            <li><b>ביטחון פנים</b>: נשק לא חוקי יטופל כטרור, כולל חילוט הון.</li>
+            <li><b>AI</b>: עליונות מבצעית מבוססת בינה מלאכותית.</li>
+          </ul>
+          <span class="src">מקורות: <a href="https://be-yahad.org.il/plans/northborderlaw/">קו העימות</a> · <a href="https://be-yahad.org.il/plans/health/">בריאות</a> · <a href="https://be-yahad.org.il/plans/natsec/">ביטחון לאומי</a></span>
+        </td>
+        <td class="c2" data-label="ישר! (איזנקוט)">
+          <span class="badge b-plat">מצע</span>
+          <ul>
+            <li><b>עלייה</b>: יעד של מיליון עולים בתוך כעשור ומיליון נוסף עד 2048; תוכנית חירום לבלימת ההגירה מהארץ.</li>
+            <li><b>ביטחון אישי</b>: מהלך חירום וקבינט לאומי נגד הפשיעה המאורגנת.</li>
+            <li><b>שיקום</b>: רשות לאומית ושר אחראי לשיקום פוסט-טראומה; שיקום הנגב המערבי והצפון.</li>
+            <li><b>תכנון</b>: רשות תכנון לאומית לקראת „ישראל 2048״.</li>
+            <li><b>שירות ציבורי</b>: סוף למינויים לא מקצועיים.</li>
+          </ul>
+          <span class="src">מקורות: <a href="https://yasharwitheisenkot.com/agenda_point/">10 הצעדים</a> · <a href="https://yasharwitheisenkot.com/principles/post-traumatic-stress-recovery/">שיקום מפוסט-טראומה</a></span>
+        </td>
+        <td class="c3" data-label="הדמוקרטים (גולן)">
+          <span class="badge b-plat">מצע</span>
+          <ul>
+            <li><b>נשים</b>: רשות לאומית למאבק באלימות נגד נשים; ייצוג של 40% לפחות במוקדי קבלת החלטות; ריצ׳רץ׳ ברשימה.</li>
+            <li><b>החברה הערבית</b>: הכרזה על מצב חירום לאומי נגד הפשיעה, כוח משימה ובתי משפט ייעודיים.</li>
+            <li><b>טרור יהודי</b>: תוכנית לאומית למיגורו ופינוי מאחזים אלימים.</li>
+            <li><b>תקשורת</b>: הגנה בחקיקה על תקציב חטיבת החדשות של השידור הציבורי.</li>
+            <li><b>שיקום</b>: מערך לאומי לטיפול בטראומת המלחמה.</li>
+          </ul>
+          <span class="src">מקורות: <a href="https://democrats.org.il/content/equality-checklist">רשימת בדיקה – שוויון</a> · <a href="https://democrats.org.il/content/crime-arab-society">פשיעה בחברה הערבית</a> · <a href="https://democrats.org.il/content/mk-voting-record">הצבעות ח״כים ותקשורת</a></span>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <p class="meta legend"><b>מקרא:</b> <span class="badge b-plat">מצע</span> מסמך מצע / תוכנית עבודה רשמית באתר המפלגה
+    &nbsp; <span class="badge b-stmt">התבטאות</span> הצהרה פומבית מתועדת של יו״ר הרשימה
+    &nbsp; <span class="badge b-none">לא נמצא</span> לא נמצאה התייחסות במקורות שנבדקו
+  </p>
+</section>
+
+<!-- ===================== MANDATE ===================== -->
+<section id="mandate" aria-labelledby="h-mandate">
+  <h2 id="h-mandate">איך מחושב מנדט בבחירות בישראל</h2>
+  <div class="grid-2">
+    <div class="card">
+      <h3>השיטה בארבעה שלבים</h3>
+      <ol>
+        <li><b>ספירת הקולות הכשרים</b> בכל הארץ (ישראל היא אזור בחירה אחד; מצביעים לרשימה, לא למועמד).</li>
+        <li><b>אחוז החסימה – 3.25%</b> מהקולות הכשרים. רשימה שלא עברה אותו לא נכנסת לכנסת, והקולות שקיבלה „נשרפים״ ואינם משתתפים בחלוקה.</li>
+        <li><b>המודד הכללי</b>: סך הקולות של הרשימות שעברו את החסימה מחולק ב-120. כל רשימה מקבלת מספר מנדטים שלם לפי מספר הפעמים שהמודד „נכנס״ בקולותיה.</li>
+        <li><b>המנדטים העודפים</b> מחולקים בשיטת בדר-עופר: לכל רשימה מחושב „מודד רשימה״ (הקולות שלה חלקי מספר המנדטים שקיבלה ועוד אחד), והרשימה בעלת המודד הגבוה ביותר מקבלת את המנדט הבא, וחוזר חלילה. שתי רשימות שחתמו על הסכם עודפים נספרות לצורך זה כגוש אחד.</li>
+      </ol>
+      <div class="formula">מודד כללי = (קולות כשרים של הרשימות שעברו את החסימה) ÷ 120<br>מודד רשימה = קולות הרשימה ÷ (מנדטים שכבר קיבלה + 1)</div>
+    </div>
+    <div class="card">
+      <h3>כמה קולות שווה מנדט בפועל?</h3>
+      <div class="stats">
+        <div class="stat"><span class="n">~7.3 מיליון</span><span class="l">בעלי זכות בחירה ב-2026</span></div>
+        <div class="stat"><span class="n">69.6%</span><span class="l">שיעור הצבעה ממוצע ב-5 מערכות 2019–2022</span></div>
+        <div class="stat"><span class="n">~164 אלף</span><span class="l">קולות לחציית אחוז החסימה (הערכה)</span></div>
+        <div class="stat"><span class="n">38–42 אלף</span><span class="l">קולות למנדט (הערכה ל-2026)</span></div>
+      </div>
+      <p><b>נקודות ייחוס מהעבר:</b> ב-2022 נספרו 4,764,742 קולות כשרים בשיעור הצבעה של 70.6%; אחוז החסימה עמד על כ-154,854 קולות, וכ-420 אלף קולות (8.8%) הלכו לרשימות שלא עברו אותו – ולכן מנדט „עלה״ אז כ-36 אלף קולות. ב-2020 נדרשו 37,897 קולות למנדט.</p>
+      <p class="note"><b>איך חושבה ההערכה ל-2026:</b> 7.3 מיליון × 69.57% (ממוצע שיעורי ההצבעה הרשמיים: 68.46%, 69.83%, 71.52%, 67.44%, 70.6%) ≈ 5.08 מיליון מצביעים; בניכוי כ-0.6% פסולים ≈ 5.05 מיליון קולות כשרים. 3.25% מהם ≈ 164 אלף. אם אף קול לא יישרף, מנדט ≈ 42 אלף קולות; אם ייזרקו כ-9% כמו ב-2022, מנדט ≈ 38 אלף. זהו חישוב שלנו על בסיס נתונים רשמיים, לא נתון רשמי – המספר האמיתי ייקבע רק לאחר ספירת הקולות.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== POLLS ===================== -->
+<section id="polls" aria-labelledby="h-polls">
+  <h2 id="h-polls">סקרי המנדטים האחרונים שפורסמו</h2>
+  <div class="card">
+    <div class="scroll-x">
+    <table class="polls">
+      <thead>
+        <tr>
+          <th>סקר (תאריך פרסום)</th>
+          <th><span class="pname p1"><span class="dot"></span>ביחד</span></th>
+          <th><span class="pname p2"><span class="dot"></span>ישר!</span></th>
+          <th><span class="pname p3"><span class="dot"></span>הדמוקרטים</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>כאן חדשות (23.10)</td><td>14</td><td>22</td><td>8</td></tr>
+        <tr><td>חדשות 12 (23.10)</td><td>15</td><td>23</td><td>10</td></tr>
+        <tr><td>חדשות 13 (23.10)</td><td>14</td><td>22</td><td>10</td></tr>
+        <tr><td>מעריב (23.10)</td><td>15</td><td>21</td><td>10</td></tr>
+        <tr><td>וואלה / מכון לזר (20.10)</td><td>14</td><td>23</td><td>9</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td>„סקר הסקרים״ של ynet (ממוצע כאן/12/13)</td><td>15</td><td>22</td><td>9</td></tr>
+      </tfoot>
+    </table>
+    </div>
+    <p class="note">טווחי טעות הדגימה שדווחו נעים בין 3% ל-4.4%. אלה הסקרים האחרונים שפורסמו לפני תקופת האיסור על פרסום סקרים בימים שלפני הבחירות. סקר אינו תחזית; תוצאות האמת יתפרסמו רק לאחר ספירת הקולות.</p>
+  </div>
+</section>
+
+<!-- ===================== PEOPLE ===================== -->
+<section id="people" aria-labelledby="h-people">
+  <h2 id="h-people">הרשימות ואנשי המפתח בראשן (נכון לרשימות שאושרו בוועדת הבחירות)</h2>
+  <p class="note">הרכב הרשימות לפי רשימות המועמדים שאושרו בוועדת הבחירות המרכזית בספטמבר 2026. הרקע לכל מועמד נלקח מעמוד הנבחרת באתר המפלגה או מעמוד המועמד הרשמי, אלא אם צוין אחרת.</p>
+  <div class="grid-3">
+    <article class="card party-card p1">
+      <h3 class="pname p1"><span class="dot"></span>ביחד בראשות נפתלי בנט</h3>
+      <div class="sub">פתק: <b>רק</b> · רשימה משותפת של „ביחד בראשות בנט מחזירים את התקווה״ ו„יש עתיד״ (הוכרזה 26.4.2026)</div>
+      <ul class="people">
+        <li><b>1.</b> <strong>נפתלי בנט</strong> – ראש הממשלה ה-13; כיהן כשר הכלכלה, החינוך והביטחון; יזם הייטק.</li>
+        <li><b>2.</b> <strong>יאיר לפיד</strong> – ראש הממשלה ה-14; כיהן כשר החוץ ושר האוצר; סופר ועיתונאי.</li>
+        <li><b>3.</b> <strong>קרן טרנר אייל</strong> – מנכ״לית משרד התחבורה ומשרד האוצר לשעבר; שותפה בקרן הון סיכון.</li>
+        <li><b>4.</b> <strong>מירב בן ארי</strong> – יו״ר הוועדה לביטחון פנים ויו״ר סיעת יש עתיד.</li>
+        <li><b>5.</b> <strong>לירן אבישר בן חורין</strong> – מנכ״לית משרד התקשורת ומנכ״לית „מסע״ לשעבר.</li>
+        <li><b>6.</b> <strong>נעם תיבון</strong> – אלוף במילואים.</li>
+        <li><b>9.</b> <strong>מירב כהן</strong> – השרה לשוויון חברתי לשעבר; יו״ר הוועדה לקידום מעמד האישה.</li>
+      </ul>
+    </article>
+    <article class="card party-card p2">
+      <h3 class="pname p2"><span class="dot"></span>ישר! עם איזנקוט</h3>
+      <div class="sub">פתק: <b>דרך</b> · רשימה משותפת של „ישר לישראל עם איזנקוט״ ו„יסודות ישראל״</div>
+      <ul class="people">
+        <li><b>1.</b> <strong>גדי איזנקוט</strong> – הרמטכ״ל ה-21 (41 שנות שירות); ח״כ בכנסת ה-25 ושר בקבינט המלחמה לאחר 7 באוקטובר; ייסד את „ישר!״ ב-2025.</li>
+        <li><b>2.</b> <strong>יורם כהן</strong> – ראש השב״כ לשעבר.</li>
+        <li><b>3.</b> <strong>אורית פרקש-הכהן</strong> – שרת המדע והטכנולוגיה לשעבר.</li>
+        <li><b>4.</b> <strong>עדי אלטשולר</strong> – יזמית חברתית, מייסדת „כנפיים של קרמבו״.</li>
+        <li><b>5.</b> <strong>מתן כהנא</strong> – השר לשירותי דת לשעבר.</li>
+        <li><b>6.</b> <strong>חילי טרופר</strong> – שר התרבות והספורט לשעבר.</li>
+        <li><b>12.</b> <strong>אלעזר שטרן</strong> – אלוף במילואים, שר המודיעין לשעבר.</li>
+      </ul>
+      <p class="note">רקע המועמדים 2–12 לפי ריכוז הרשימה באתר „הפתק״; סדר הרשימה מאומת מול אתר המפלגה.</p>
+    </article>
+    <article class="card party-card p3">
+      <h3 class="pname p3"><span class="dot"></span>הדמוקרטים בראשות יאיר גולן</h3>
+      <div class="sub">פתק: <b>אמת</b> · רשימה משותפת של „הדמוקרטים מיסודה של תנועת העבודה״ ו„מרצ״</div>
+      <ul class="people">
+        <li><b>1.</b> <strong>יאיר גולן</strong> – אלוף במיל׳, סגן הרמטכ״ל לשעבר; ח״כ (2019–2022) וסגן שר הכלכלה (2021–2022).</li>
+        <li><b>2.</b> <strong>נעמה לזימי</strong> – ח״כ, יו״ר הוועדה המיוחדת לענייני הצעירים.</li>
+        <li><b>3.</b> <strong>גלעד קריב</strong> – ח״כ, לשעבר מנכ״ל התנועה הרפורמית ויו״ר ועדת החוקה (הכנסת ה-24).</li>
+        <li><b>4.</b> <strong>אפרת רייטן</strong> – ח״כ, עו״ד.</li>
+        <li><b>11.</b> <strong>נמרוד שפר</strong> – אלוף במיל׳, ראש אגף התכנון בצה״ל ומנכ״ל התעשייה האווירית לשעבר.</li>
+        <li><b>20.</b> <strong>ערן עציון</strong> – לשעבר סגן ראש המל״ל וראש החטיבה לתכנון מדיני במשרד החוץ.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== METHOD ===================== -->
+<section aria-labelledby="h-method">
+  <h2 id="h-method">שיטת העבודה ומגבלות</h2>
+  <div class="callout">
+    <p>העמדות נלקחו מאתרי המפלגות ומסמכי המצע הרשמיים שלהן, כפי שהיו זמינים ב-26 באוקטובר 2026. במקום שבו המצע אינו מתייחס לנושא, הובאה התבטאות פומבית מתועדת של יו״ר הרשימה (פוסט בחשבון רשמי או ריאיון מדווח), והיא מסומנת בתג „התבטאות״. במקום שבו לא נמצאה התייחסות כלל, הדבר מצוין במפורש ולא הושלם מהשערות.</p>
+    <p>עמדות פנימיות, הבדלי דגשים בין המפלגות המרכיבות כל רשימה משותפת, והתחייבויות קואליציוניות אינם משתקפים בהכרח במסמכי המצע. מומלץ לעיין במקור עצמו לפני קבלת החלטה.</p>
+  </div>
+</section>
+
+<!-- ===================== SOURCES ===================== -->
+<section id="sources" class="sources" aria-labelledby="h-sources">
+  <h2 id="h-sources">מקורות ואסמכתאות</h2>
+
+  <h3><span class="pname p1"><span class="dot"></span>ביחד בראשות נפתלי בנט</span></h3>
+  <ol>
+    <li>חוק המשרתים – גיוס, הטבות למשרתים ומקורות המימון: <a href="https://be-yahad.org.il/plans/meshartim-law/">be-yahad.org.il/plans/meshartim-law</a></li>
+    <li>תפיסת הביטחון – עזה, איראן, קטאר, נורמליזציה, נשק לא חוקי: <a href="https://be-yahad.org.il/plans/natsec/">be-yahad.org.il/plans/natsec</a></li>
+    <li>יוקר המחיה – סל הקניות, יבוא ומונופולים: <a href="https://be-yahad.org.il/plans/yokermichya/">be-yahad.org.il/plans/yokermichya</a></li>
+    <li>משבר הדיור – השכרה ארוכת טווח והטבות מס: <a href="https://be-yahad.org.il/plans/housing/">be-yahad.org.il/plans/housing</a></li>
+    <li>חוק קו העימות – שיקום הצפון והטבות מס: <a href="https://be-yahad.org.il/plans/northborderlaw/">be-yahad.org.il/plans/northborderlaw</a></li>
+    <li>דת ומדינה – זוגיות אזרחית, שבת, רבנות, גיור: <a href="https://be-yahad.org.il/plans/religionandstate/">be-yahad.org.il/plans/religionandstate</a></li>
+    <li>שוויון לקהילה הגאה: <a href="https://be-yahad.org.il/plans/pride/">be-yahad.org.il/plans/pride</a> · <a href="https://be-yahad.org.il/en/plans/together-well-bring-about-equality-for-the-lgbt-community-en/">הגרסה באנגלית</a></li>
+    <li>חינוך – ליבה, שכר מורים, ביזור: <a href="https://be-yahad.org.il/plans/education/">be-yahad.org.il/plans/education</a></li>
+    <li>מערכת הבריאות: <a href="https://be-yahad.org.il/plans/health/">be-yahad.org.il/plans/health</a></li>
+    <li>חוקה ומגילת העצמאות / חוק יסוד: החקיקה: <a href="https://be-yahad.org.il/the-scroll/">be-yahad.org.il/the-scroll</a></li>
+    <li>התחייבות לוועדת חקירה ממלכתית: <a href="https://be-yahad.org.il/vaada/">be-yahad.org.il/vaada</a></li>
+    <li>נבחרת הרשימה ורקע המועמדים: <a href="https://be-yahad.org.il/team/">be-yahad.org.il/team</a></li>
+    <li>רשימת המועמדים באתר ועדת הבחירות: <a href="https://www.gov.il/he/pages/beyahad_list1">gov.il/he/pages/beyahad_list1</a></li>
+    <li>התבטאות: בנט על מדינה פלסטינית („בשום קונסטלציה״) – וואלה: <a href="https://www.walla.co.il/news/politics/3863893">walla.co.il/news/politics/3863893</a></li>
+    <li>התבטאות: „לא נקים מדינה פלסטינית״ – ישראל היום, 17.10.2026: <a href="https://www.israelhayom.co.il/news/politics/article/21645934">israelhayom.co.il/…/21645934</a></li>
+  </ol>
+
+  <h3><span class="pname p2"><span class="dot"></span>ישר! עם איזנקוט</span></h3>
+  <ol>
+    <li>10 הצעדים לשגשוגה של מדינת ישראל (מסמך המצע המרכזי): <a href="https://yasharwitheisenkot.com/agenda_point/">yasharwitheisenkot.com/agenda_point</a> · <a href="https://yasharwitheisenkot.com/wp-content/uploads/2026/06/Yashar_10_Steps_Brochure.pdf">גרסת PDF</a></li>
+    <li>שירות ממלכתי לכל – חוק הגיוס והשירות: <a href="https://yasharwitheisenkot.com/principles/service-for-all/">yasharwitheisenkot.com/principles/service-for-all</a></li>
+    <li>כלכלה ויוקר המחיה – מיסוי, תחרות, דיור: <a href="https://yasharwitheisenkot.com/principles/economics/">yasharwitheisenkot.com/principles/economics</a></li>
+    <li>הקהילה הגאה: <a href="https://yasharwitheisenkot.com/principles/lgbtqia/">yasharwitheisenkot.com/principles/lgbtqia</a></li>
+    <li>חינוך ממלכתי: <a href="https://yasharwitheisenkot.com/principles/education/">yasharwitheisenkot.com/principles/education</a></li>
+    <li>שיקום פוסט-טראומה וחוסן לאומי: <a href="https://yasharwitheisenkot.com/principles/post-traumatic-stress-recovery/">yasharwitheisenkot.com/principles/post-traumatic-stress-recovery</a></li>
+    <li>מתווה ועדת חקירה ממלכתית לטבח 7 באוקטובר: <a href="https://yasharwitheisenkot.com/vaadat-hakira/">yasharwitheisenkot.com/vaadat-hakira</a></li>
+    <li>רשימת כלל התוכניות: <a href="https://yasharwitheisenkot.com/principles/">yasharwitheisenkot.com/principles</a></li>
+    <li>הנבחרת ורקע יו״ר המפלגה: <a href="https://yasharwitheisenkot.com/team-member/">yasharwitheisenkot.com/team-member</a></li>
+    <li>רשימת המועמדים באתר ועדת הבחירות: <a href="https://www.gov.il/he/pages/yashar_list_2">gov.il/he/pages/yashar_list_2</a></li>
+    <li>התבטאות: פוסט איזנקוט ב-X על מדינה פלסטינית, 22.8.2026: <a href="https://x.com/gadi_eisenkot/status/2091209017259368960">x.com/gadi_eisenkot/status/2091209017259368960</a></li>
+    <li>רקע מועמדים 2–12 (ריכוז): „הפתק״: <a href="https://www.thepetek.com/party/yashar">thepetek.com/party/yashar</a></li>
+  </ol>
+
+  <h3><span class="pname p3"><span class="dot"></span>הדמוקרטים בראשות יאיר גולן</span></h3>
+  <ol>
+    <li>מסמך החזון של הדמוקרטים (אפריל 2026): <a href="https://democrats.org.il/wp-content/uploads/2026/04/vision0426.pdf">democrats.org.il/…/vision0426.pdf</a></li>
+    <li>תוכנית העבודה המלאה (אוגוסט 2026): <a href="https://democrats.org.il/wp-content/uploads/2026/08/plan-8-26-he.pdf">democrats.org.il/…/plan-8-26-he.pdf</a> · אתר התוכניות: <a href="https://yes.democrats.org.il/">yes.democrats.org.il</a></li>
+    <li>לסיים את המלחמה בהסכם מדיני – פלסטינים, עזה, אזור: <a href="https://democrats.org.il/content/end-war-agreement">democrats.org.il/content/end-war-agreement</a></li>
+    <li>ועדת חקירה ממלכתית ל-7 באוקטובר: <a href="https://democrats.org.il/content/state-commission-inquiry">democrats.org.il/content/state-commission-inquiry</a></li>
+    <li>שוויון, להט״ב, חינוך והדרת נשים: <a href="https://democrats.org.il/content/equality-checklist">democrats.org.il/content/equality-checklist</a></li>
+    <li>תחבורה ציבורית בשבת: <a href="https://democrats.org.il/content/shabbat-public-transport">democrats.org.il/content/shabbat-public-transport</a></li>
+    <li>נישואים אזרחיים וגיור: <a href="https://democrats.org.il/content/civil-marriage-conversion">democrats.org.il/content/civil-marriage-conversion</a></li>
+    <li>ביטול חוקי הרפורמה המשפטית: <a href="https://democrats.org.il/content/repeal-judicial-overhaul">democrats.org.il/content/repeal-judicial-overhaul</a></li>
+    <li>פשיעה בחברה הערבית: <a href="https://democrats.org.il/content/crime-arab-society">democrats.org.il/content/crime-arab-society</a></li>
+    <li>הצבעות הח״כים ותוכנית התקשורת: <a href="https://democrats.org.il/content/mk-voting-record">democrats.org.il/content/mk-voting-record</a></li>
+    <li>עמוד החזון באנגלית (דת ומדינה, דמוקרטיה): <a href="https://democrats.org.il/en/home-2/">democrats.org.il/en/home-2</a></li>
+    <li>רשימת המועמדים באתר ועדת הבחירות: <a href="https://www.gov.il/he/pages/hademokratim_list17">gov.il/he/pages/hademokratim_list17</a></li>
+  </ol>
+
+  <h3>שיטת הבחירות, נתוני השתתפות וסקרים</h3>
+  <ol>
+    <li>אישור 38 הרשימות ואותיות הפתק – ועדת הבחירות המרכזית (דיווח זמן): <a href="https://www.zman.co.il/live/727907/">zman.co.il/live/727907</a> · ynet: <a href="https://www.ynet.co.il/news/article/s1ibdii5fe">ynet.co.il/news/article/s1ibdii5fe</a></li>
+    <li>נתוני בחירות 2022 (קולות כשרים, שיעור הצבעה) – המכון הישראלי לדמוקרטיה: <a href="https://www.idi.org.il/policy/parties-and-elections/elections/2022/">idi.org.il/…/elections/2022</a></li>
+    <li>אחוז החסימה ב-2022 (כ-154,854 קולות) – עיריית תל אביב-יפו, עיבוד נתוני ועדת הבחירות: <a href="https://www.tel-aviv.gov.il/Transparency/DocLib6/תוצאות הבחירות לכנסת ה-25, 1.11.2022.pdf">tel-aviv.gov.il/…/תוצאות הבחירות לכנסת ה-25</a></li>
+    <li>קולות שנשרפו ב-2022 (כ-420 אלף, 8.8%) – מרכז טאוב: <a href="https://www.taubcenter.org.il/wp-content/uploads/2026/08/אחוז-החסימה-עברית-להפצה-5.7.26-2.pdf">taubcenter.org.il/…/אחוז-החסימה</a></li>
+    <li>37,897 קולות למנדט ב-2020 – ynet: <a href="https://www.ynet.co.il/articles/0,7340,L-5689167,00.html">ynet.co.il/articles/0,7340,L-5689167</a></li>
+    <li>שיעורי ההצבעה 2019–2021 – i24NEWS: <a href="https://www.i24news.tv/he/news/israel-elections-2026/election-magazine/artc-fd6a6b58">i24news.tv/…/artc-fd6a6b58</a></li>
+    <li>מספר בעלי זכות הבחירה ב-2026 – מעריב: <a href="https://www.maariv.co.il/news/elections-2026/article-1376718">maariv.co.il/…/article-1376718</a></li>
+    <li>שיטת בדר-עופר ומודד הרשימה – וואלה: <a href="https://news.walla.co.il/item/2609337">news.walla.co.il/item/2609337</a></li>
+    <li>סקר כאן חדשות (23.10): <a href="https://www.zman.co.il/live/735892/">zman.co.il/live/735892</a></li>
+    <li>סקר חדשות 13 (23.10): <a href="https://13tv.co.il/item/news/politics/politics/survey-905415900/">13tv.co.il/…/survey-905415900</a></li>
+    <li>ריכוז הסקרים האחרונים וממוצע – ynet: <a href="https://www.ynet.co.il/news/elections2026/article/hy500sxt2mx">ynet.co.il/…/hy500sxt2mx</a></li>
+    <li>סקרי מעריב וערוצי הטלוויזיה – מעריב: <a href="https://maariv.co.il/news/elections-2026/article-1380692">maariv.co.il/…/article-1380692</a></li>
+    <li>סקר וואלה / מכון לזר (20.10): <a href="https://www.walla.co.il/news/politics/383958175">walla.co.il/news/politics/383958175</a></li>
+  </ol>
+</section>
+
+<section aria-label="קריאה להצבעה">
+  <div class="vote-note" role="note"><span class="vote-ic" aria-hidden="true">🗳️</span><div><b>הדבר הכי חשוב: צאו להצביע!</b> לא משנה לאיזו רשימה – כל קול משפיע על הרכב הכנסת הבאה. הבחירות ייערכו מחר, יום שלישי, 27 באוקטובר 2026. קחו איתכם תעודה מזהה, ובדקו מראש היכן הקלפי שלכם בהודעה לבוחר או באתר ועדת הבחירות המרכזית.</div></div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  הדף הופק ב-26 באוקטובר 2026 באמצעות בינה מלאכותית (AI), לצורכי מידע בלבד, על בסיס מקורות רשמיים ומתועדים. אין בו המלצה להצביע לרשימה כלשהי. לאימות סופי של כל עמדה יש לעיין במקור המקושר.
+</footer>
+
+<button class="theme-btn" type="button" id="themeBtn" aria-label="החלפת מצב תצוגה">◐ מצב תצוגה</button>
+<script>
+  (function(){
+    var root=document.documentElement, key='cmp-theme';
+    try{var saved=localStorage.getItem(key); if(saved){root.setAttribute('data-theme',saved);}}catch(e){}
+    document.getElementById('themeBtn').addEventListener('click',function(){
+      var cur=root.getAttribute('data-theme');
+      var dark=cur?cur==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next=dark?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{localStorage.setItem(key,next);}catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
